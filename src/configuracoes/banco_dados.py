@@ -56,6 +56,15 @@ async def obter_sessao():
         yield sessao
 
 
+def obter_sessao_db():
+    """Função síncrona para obter sessão de banco de dados (para testes e uso direto)."""
+    from sqlalchemy.orm import sessionmaker
+    
+    eng = get_engine()
+    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=eng)
+    return SessionLocal()
+
+
 def criar_tabelas():
     """Cria todas as tabelas no banco de dados."""
     Base.metadata.create_all(bind=get_engine())
