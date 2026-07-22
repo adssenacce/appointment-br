@@ -19,7 +19,7 @@ def obter_servico_tenant(
     return ServicoTenant(repositorio=repositorio)
 
 
-router = APIRouter(prefix="/tenants", tags=["Tenants"])
+router = APIRouter(prefix="/api/v1/tenants", tags=["Tenants"])
 
 
 @router.post(

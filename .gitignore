@@ -1,11 +1,41 @@
 ```
 # Python
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
+*.pyc
+*.pyo
+*.pyd
 .Python
-build/
+env/
+venv/
+.venv/
+.ENV
+.ENV.local
+.env
+.env.local
+.env.*
+.python-version
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.pytest_cache/
+.mypy_cache/
+.hypothesis/
+
+# Testing
+.tests/
+test/
+tests/
+
+# Distribution / packaging
+.Python
+.build/
 develop-eggs/
 dist/
 downloads/
@@ -20,24 +50,12 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-venv/
-env/
-ENV/
-.venv/
-.env/
-.ENV/
-.python-version
-.pytest_cache/
-.mypy_cache/
-.coverage
-coverage/
-htmlcov/
+MANIFEST
 
-# Database
-tenants.db
-
-# Environment
-.env
-.env.local
-.env.*
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 ```
