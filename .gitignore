@@ -1,65 +1,28 @@
 ```
-# Database file
-tenants.db
+# Database files
+*.db
 
-# Environment files
-.env
-.env.local
-*.env.*
-
-# Python specific
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
-python/
-pip-log.txt
-pip-delete-this-directory.txt
-.pytest_cache/
-.coverage
-coverage/
-htmlcov/
-
-# Virtual environments
+env/
 venv/
 .venv/
-env/
-ENV/
-.ENV/
-virtualenv/
-.Versions/
-
-# IDE and editor files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+.ENV
+.python-version
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
 .DS_Store
 Thumbs.db
-
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-*.temp
-*.bak
-*.backup
-
-# Build and distribution artifacts
-build/
-dist/
-*.egg
-*.egg-info/
-*.so
-*.dylib
-*.dll
-*.exe
-*.out
-
-# Testing
-.nyc_output/
-coverage.xml
 ```

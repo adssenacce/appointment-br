@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.configuracoes.banco_dados import criar_tabelas
 from src.controladores.controlador_tenant import router as tenant_router
 from src.controladores.controlador_autenticacao import router as autenticacao_router
+from src.controladores.controlador_usuario_tenant import router as usuario_tenant_router
 
 
 def criar_aplicacao() -> FastAPI:
@@ -32,6 +33,7 @@ def criar_aplicacao() -> FastAPI:
     # Incluir routers
     aplicacao.include_router(tenant_router)
     aplicacao.include_router(autenticacao_router)
+    aplicacao.include_router(usuario_tenant_router)
 
     @aplicacao.get("/", tags=["Root"])
     def root():
