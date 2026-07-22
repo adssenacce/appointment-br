@@ -1,61 +1,65 @@
 ```
-# Python
+# Database file
+tenants.db
+
+# Environment files
+.env
+.env.local
+*.env.*
+
+# Python specific
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
-env/
-venv/
-.venv/
-.ENV
-.ENV.local
-.env
-.env.local
-.env.*
-.python-version
+python/
 pip-log.txt
 pip-delete-this-directory.txt
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.log
 .pytest_cache/
-.mypy_cache/
-.hypothesis/
+.coverage
+coverage/
+htmlcov/
 
-# Testing
-.tests/
-test/
-tests/
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+.ENV/
+virtualenv/
+.Versions/
 
-# Distribution / packaging
-.Python
-.build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# IDE
+# IDE and editor files
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Build and distribution artifacts
+build/
+dist/
+*.egg
+*.egg-info/
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+
+# Testing
+.nyc_output/
+coverage.xml
 ```

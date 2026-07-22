@@ -1,8 +1,32 @@
 import pytest
+import os
+
+# Configurar banco de dados de teste antes de importar a aplicação
+os.environ["DATABASE_URL"] = "sqlite:///./teste_banco.db"
+
 from fastapi.testclient import TestClient
 from src.principal import aplicacao
+from src.configuracoes.banco_dados import get_engine, Base
 
 client = TestClient(aplicacao)
+
+
+@pytest.fixture(scope="function")
+def setup_banco_dados():
+    """Configura banco de dados limpo para cada teste."""
+    # Recria as tabelas
+    engine = get_engine()
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
+    yield
+    # Limpa após o teste
+    Base.metadata.drop_all(bind=engine)
+
+
+@pytest.fixture(autouse=True)
+def limpar_banco_dados(setup_banco_dados):
+    """Limpa o banco de dados antes de cada teste automaticamente."""
+    yield
 
 
 class TestCriarTenant:
@@ -26,6 +50,15 @@ class TestCriarTenant:
 
     def test_criar_tenant_slug_duplicado(self):
         """Testa criação de tenant com slug duplicado."""
+        # Primeiro cria um tenant
+        dados_primeiro = {
+            "nome": "Empresa Primeira",
+            "slug": "empresa-teste"
+        }
+        resposta_primeira = client.post("/api/v1/tenants", json=dados_primeiro)
+        assert resposta_primeira.status_code == 201
+        
+        # Tenta criar outro com mesmo slug
         dados = {
             "nome": "Empresa Duplicada",
             "slug": "empresa-teste"
@@ -41,6 +74,14 @@ class TestListarTenants:
 
     def test_listar_todos_tenants(self):
         """Testa listagem de todos os tenants."""
+        # Cria um tenant primeiro
+        dados_criacao = {
+            "nome": "Empresa Listagem",
+            "slug": "empresa-listagem"
+        }
+        resposta_criacao = client.post("/api/v1/tenants", json=dados_criacao)
+        assert resposta_criacao.status_code == 201
+        
         resposta = client.get("/api/v1/tenants")
         
         assert resposta.status_code == 200

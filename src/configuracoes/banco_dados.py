@@ -1,3 +1,4 @@
+import os
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import create_engine
 from sqlalchemy.pool import NullPool
@@ -8,7 +9,8 @@ from src.configuracoes.definicoes import obter_configuracoes
 configuracoes = obter_configuracoes()
 
 # Usar SQLite para desenvolvimento se PostgreSQL não estiver disponível
-URL_BANCO_DADOS = "sqlite:///./tenants.db"  # SQLite para desenvolvimento
+# Permite sobrescrever via variável de ambiente para testes
+URL_BANCO_DADOS = os.getenv("DATABASE_URL", "sqlite:///./tenants.db")
 # URL_BANCO_DADOS = configuracoes.URL_BANCO_DADOS  # PostgreSQL para produção
 
 engine = None
