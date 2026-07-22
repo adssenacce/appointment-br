@@ -19,8 +19,6 @@ def setup_banco_dados():
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
     yield
-    # Limpa após o teste
-    Base.metadata.drop_all(bind=engine)
 
 
 @pytest.fixture(autouse=True)
